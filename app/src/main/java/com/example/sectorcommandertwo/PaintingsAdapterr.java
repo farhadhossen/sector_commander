@@ -1,4 +1,4 @@
-package com.example.sectorcommander;
+package com.example.sectorcommandertwo;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,18 +11,14 @@ import android.widget.Toast;
 import com.alexvasilkov.android.commons.adapters.ItemsAdapter;
 import com.alexvasilkov.android.commons.ui.ContextHelper;
 import com.alexvasilkov.android.commons.ui.Views;
-import com.example.sectorcommander.FoldableListActivity;
-import com.example.sectorcommander.GlideHelper;
-import com.example.sectorcommander.R;
-import com.example.sectorcommander.UnfoldableDetailsActivity;
 
 import java.util.Arrays;
 
-public class PaintingsAdapter extends ItemsAdapter<Painting, PaintingsAdapter.ViewHolder>
+public class PaintingsAdapterr extends ItemsAdapter<Paintingg, PaintingsAdapterr.ViewHolder>
         implements View.OnClickListener {
 
-    public PaintingsAdapter(Context context) {
-        setItemsList(Arrays.asList(Painting.getAllPaintings(context.getResources())));
+    public PaintingsAdapterr(Context context) {
+        setItemsList(Arrays.asList(Paintingg.getAllPaintings(context.getResources())));
     }
 
     @Override
@@ -34,21 +30,21 @@ public class PaintingsAdapter extends ItemsAdapter<Painting, PaintingsAdapter.Vi
 
     @Override
     protected void onBindHolder(ViewHolder holder, int position) {
-        final Painting item = getItem(position);
+        final Paintingg item = getItem(position);
 
         holder.image.setTag(R.id.list_item_image, item);
-        GlideHelper.loadPaintingImage(holder.image, item);
+        GlideHelperr.loadPaintingImage(holder.image, item);
         holder.title.setText(item.getTitle());
     }
 
     @Override
     public void onClick(View view) {
-        final Painting item = (Painting) view.getTag(R.id.list_item_image);
+        final Paintingg item = (Paintingg) view.getTag(R.id.list_item_image);
         final Activity activity = ContextHelper.asActivity(view.getContext());
 
-        if (activity instanceof UnfoldableDetailsActivity) {
-            ((UnfoldableDetailsActivity) activity).openDetails(view, item);
-        } else if (activity instanceof FoldableListActivity) {
+        if (activity instanceof UnfoldableeDetailsActivityy) {
+            ((UnfoldableeDetailsActivityy) activity).openDetails(view, item);
+        } else if (activity instanceof FoldableListActivityy) {
             Toast.makeText(activity, item.getTitle(), Toast.LENGTH_SHORT).show();
         }
     }
